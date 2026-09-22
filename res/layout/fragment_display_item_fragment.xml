@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="200.0dp" android:text="Loading..." app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatButton android:textStyle="bold" android:textColor="@color/white" android:id="@id/btn_back" android:background="@color/red" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Go Back" android:textAllCaps="false" app:layout_constraintBottom_toBottomOf="parent" />
+    <WebView android:id="@id/wv_display" android:layout_width="match_parent" android:layout_height="0.0dp" app:layout_constraintBottom_toTopOf="@id/btn_back" app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatButton android:textSize="10.0dp" android:textColor="@color/white" android:id="@id/btn_download" android:background="@color/red" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Download" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

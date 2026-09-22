@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburger to Close Animation</title>
+
+    <STYLE>
+
+        body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    background-color: #FFC300; /* Optional background color */
+}
+
+        /* Styling for the menu icon */
+.menu-icon {
+    width: 25px;
+    height: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* The three bars */
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* When the menu icon is active (close state) */
+.menu-icon.active .top {
+    transform: translateY(6.5px) rotate(45deg);
+}
+
+.menu-icon.active .middle {
+    opacity: 0;
+}
+
+.menu-icon.active .bottom {
+    transform: translateY(-6.5px) rotate(-45deg);
+}
+
+        .menu-icon:focus, .menu-icon:active {
+    outline: none;
+}
+
+    </STYLE>
+</head>
+<body>
+
+<div class="menu-icon" id="menuIcon">
+    <span class="bar top"></span>
+    <span class="bar middle"></span>
+    <span class="bar bottom"></span>
+</div>
+
+<script>
+
+    document.getElementById("menuIcon").addEventListener("click", function () {
+        this.classList.toggle("active");
+        AndroidInterface.sendClickEvent(this.classList.contains("active"));
+    });
+
+
+    // Function to reset active state (called from Kotlin)
+    function resetActiveState() {
+        let menuIcon = document.getElementById("menuIcon");
+        if (menuIcon.classList.contains("active")) {
+            menuIcon.classList.remove("active");
+        }
+    }
+
+
+</script>
+</body>
+</html>

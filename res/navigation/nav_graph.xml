@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation android:id="@id/nav_graph" app:startDestination="@id/landingScreenFragment"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <fragment android:label="fragment_whatsapp_home" android:name="com.betnowck.coreapps.ui.fragment.HomeFragment" android:id="@id/homeFragment">
+        <action android:id="@id/action_homeFragment_to_otherMediaFragments" app:destination="@id/otherMediaFragments" />
+        <action android:id="@id/action_homeFragment_to_displayItemFragment" app:destination="@id/displayItemFragment" />
+        <action android:id="@id/action_homeFragment_to_maintenanceFragment" app:destination="@id/maintenanceFragment" />
+        <action android:id="@id/action_homeFragment_to_bottomMenuFragment" app:destination="@id/bottomMenuFragment" />
+        <action android:id="@id/action_homeFragment_to_bottomSheetAlertFragment" app:destination="@id/bottomSheetAlertFragment" />
+    </fragment>
+    <fragment android:label="fragment_other_media_fragments" android:name="com.betnowck.coreapps.ui.fragment.OtherMediaFragments" android:id="@id/otherMediaFragments" />
+    <dialog android:label="fragment_bottom_menu" android:name="com.betnowck.coreapps.ui.fragment.BottomMenuFragment" android:id="@id/bottomMenuFragment">
+        <action android:id="@id/action_bottomMenuFragment_to_otherMediaFragments" app:destination="@id/otherMediaFragments" />
+    </dialog>
+    <fragment android:label="fragment_display_item_fragment" android:name="com.betnowck.coreapps.ui.fragment.DisplayItemFragment" android:id="@id/displayItemFragment">
+        <argument android:name="FILE_URL" app:argType="string" />
+        <argument android:name="TYPE" app:argType="string" />
+    </fragment>
+    <fragment android:label="fragment_maintenance" android:name="com.betnowck.coreapps.ui.fragment.MaintenanceFragment" android:id="@id/maintenanceFragment" />
+    <fragment android:label="fragment_configuration" android:name="com.betnowck.coreapps.ui.fragment.ConfigurationFragment" android:id="@id/configurationFragment">
+        <action android:id="@id/action_configurationFragment_to_homeFragment" app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment android:label="fragment_landing_screen" android:name="com.betnowck.coreapps.ui.fragment.LandingScreenFragment" android:id="@id/landingScreenFragment">
+        <action android:id="@id/action_landingScreenFragment_to_homeFragment" app:destination="@id/homeFragment" app:popUpTo="@id/landingScreenFragment" app:popUpToInclusive="true" />
+    </fragment>
+    <dialog android:label="fragment_bottom_sheet_alert" android:name="com.betnowck.coreapps.ui.fragment.BottomSheetAlertFragment" android:id="@id/bottomSheetAlertFragment" />
+</navigation>

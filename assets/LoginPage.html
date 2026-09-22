@@ -1,0 +1,144 @@
+ <!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>HTML Login Form</title>
+
+    <STYLE>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+
+       h1, h3 {
+            text-align: center;
+            color: #333;
+        }
+
+       label {
+            display: block;
+            margin: 10px 0 5px;
+       }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+
+        button {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            background-color: #4CAF50;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .buttonDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .buttonColor {
+             background-color: #008CBA;
+        }
+
+        #imagePreview {
+            width: 300px;
+            height: auto;
+            display: none;
+        }
+
+    </STYLE>
+</head>
+
+<body>
+<div class="main" id="bg">
+    <h1>Login</h1>
+    <h3>Enter your login credentials</h3>
+
+    <form>
+        <label for="first">
+            Username:
+        </label>
+        <input type="text" id="first" name="first"
+               placeholder="Enter your Username" required>
+
+        <label for="password">
+            Password:
+        </label>
+        <input type="password" id="password" name="password"
+               placeholder="Enter your Password" required>
+    </form>
+
+    <div class="buttonDiv">
+        <button type="submit" onclick="sendDetailsToAndroid()" class="buttonColor" id="buttonLogin">
+            Submit
+        </button>
+    </div>
+
+
+    <h2>Select an Image</h2>
+    <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="previewImage(event)">
+    <button onclick="document.getElementById('fileInput').click()">Choose Image</button>
+    <br><br>
+    <img id="preview" style="max-width: 100%; display: none;"/>
+
+</div>
+
+</body>
+<SCRIPT>
+
+
+    function sendDetailsToAndroid() {
+        const username = document.getElementById("first").value;
+        const password = document.getElementById("password").value;
+
+        AndroidInterface.sendCredentials(username, password);
+    }
+
+    function changeBackgroundColor(cardBg,buttonBg) {
+        var cardBackground = document.getElementById("bg");
+        var buttonBackground = document.getElementById("buttonLogin");
+
+        cardBackground.style.backgroundColor = cardBg;
+        buttonBackground.style.backgroundColor = buttonBg;
+    }
+
+    function previewImage(event) {
+    console.log("Clicked");
+            var reader = new FileReader();
+            reader.onload = function() {
+                var preview = document.getElementById("preview");
+                preview.src = reader.result;
+                preview.style.display = "block";
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+</SCRIPT>
+
+</html>
